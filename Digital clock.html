@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Digital Clock
+	</title>
+	<style type="text/css">
+		body{
+			background: #000;
+		}
+		#Clock{
+			position: absolute;
+			top:50%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			color:#fff;
+			font-size: 150px;
+			border: 40px solid rgb(255,255,225);
+			border-radius: 100%;
+			padding: 50px 50px 50px 50px;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="Clock"></div>
+	<script type="text/javascript">
+		function showTime(){
+			var date =new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds(); 
+			var meridiem="AM";
+			h=(h==0)?12:h;
+			if(h>12)
+			{
+				h-=12;
+				meridiem="PM";
+			}
+			if(h < 10)
+			{
+				h="0"+h;
+			}
+			if(m<10)
+			{
+				m="0"+m;
+			}
+			if(s<10)
+			{
+				s="0"+s;
+			}
+			var time=h+":"+m+":"+s;
+			document.getElementById("Clock").innerText=time;
+			document.getElementById("Clock").textContent=time;
+
+		}
+		showTime();
+		setInterval(showTime,1000); //This will call the function showTime in intervals of 1 second,so we get a dynamic clock
+	
+	</script>
+</body>
+</html>
